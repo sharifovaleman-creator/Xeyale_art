@@ -1,0 +1,276 @@
+
+body {
+  margin: 0;
+  height: 200vh; /* scroll üçün */
+  font-family: Arial;
+   -webkit-user-select: none;
+ -ms-user-select: none;
+ user-select: none;
+ -webkit-touch-callout: none;
+}
+
+/* 🔥 background kimi işləyən layer */
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-image: url("image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1; /* arxada qalır */
+}
+.container {
+  background-image: url("mor.png");
+  background-size: cover;        /* şəkil tam doldurur */
+  background-position: center;   /* ortadan hizalayır */
+  background-repeat: no-repeat;  /* təkrarlanmasın */
+  margin: 0;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 460px;
+  color: white;
+  font-family: 'TT Ramillas', serif;
+}
+/* başlıq */
+h1 {
+  margin-bottom: 20px;
+  color: #D4AF37;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
+0 0 12px rgba(109, 49, 163, 0.5);
+text-shadow: 0 0 5px #D4AF37;
+font-family: 'Retro Vintage', cursive;
+
+}
+
+/* timer */
+.timer {
+  display: flex;
+  justify-content: space-between;
+  gap: 1px;
+}
+
+/* bloklar */
+.box {
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+  position: relative;
+}
+
+/* rəqəm */
+.number {
+  font-size: 32px;
+  font-weight: bold;
+  color: #D4AF37;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
+0 0 12px rgba(109, 49, 163, 0.5);
+text-shadow: 0 0 5px #D4AF37;
+font-family: 'TT Ramillas', serif;
+}
+
+/* text */
+.label {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* xətlər (vurğu) */
+.box::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 40%;
+
+  border-bottom: 6px dotted #D4AF37; /* nöqtəli xətt */
+  transform: translateX(-50%);
+}
+/* mobil optimizasiya */
+@media (max-width: 500px) {
+  .number {
+    font-size: 22px;
+  }
+}
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  
+}
+
+/* ümumi button */
+.buttons button {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: 0.3s ease;
+  border: 2px solid transparent;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
+0 0 12px rgba(109, 49, 163, 0.5);
+font-family: 'TT Ramillas', serif;
+
+}
+
+/* 1,3,5 → MOR */
+.buttons button:nth-child(odd) {
+  background: #6D31A3;
+  color: #D4AF37;
+   background-image: url("mor.png");
+  background-size: cover;        /* şəkil tam doldurur */
+  background-position: center;   /* ortadan hizalayır */
+  background-repeat: no-repeat;  /* təkrarlanmasın */
+  text-shadow: 0 0 5px #D4AF37;
+  
+}
+
+/* 2,4 → QIZIL (gold/red vibe) */
+.buttons button:nth-child(even) {
+  background: #D4AF37;
+  color: #471F6B;
+   background-image: url("sari.png");
+  background-size: cover;        /* şəkil tam doldurur */
+  background-position: center;   /* ortadan hizalayır */
+  background-repeat: no-repeat;  /* təkrarlanmasın */
+  text-shadow: 0 0 5px #471f6b;
+  
+}
+
+/* hover effekt */
+.buttons button:hover {
+  transform: scale(1.03);
+  filter: brightness(1.1);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+/* klik */
+.buttons button:active {
+  transform: scale(0.97);
+}
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+/* icon container */
+.socials a {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 12px;
+   background-image: url("mor.png");
+  background-size: cover;        /* şəkil tam doldurur */
+  background-position: center;   /* ortadan hizalayır */
+  background-repeat: no-repeat;  /* təkrarlanmasın */
+  border: 1px solid #D4AF37; /* QIZILI vurğu */
+
+  transition: 0.3s ease;
+}
+
+/* icon image */
+.socials img {
+  width: 60px;
+  height: 60px;
+}
+.tiktok img{
+width: 90px;
+  height: 90px;
+
+}
+/* hover */
+.socials a:hover {
+  transform: translateY(-4px) scale(1.08);
+  background: #471F6B; /* daha tünd mor */
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+.attend {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.attend button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+/* Gələcəm (mor) */
+#yesBtn {
+  background: #6D31A3;
+  border: 2px solid #6D31A3;
+  color: #d4af37;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
+0 0 12px rgba(109, 49, 163, 0.5);
+}
+
+/* Gəlməyəcəm (qızılı) */
+#noBtn {
+  background: #D4AF37;
+  border: 2px solid #D4AF37;
+  color: #471F6B;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
+0 0 12px rgba(109, 49, 163, 0.5);
+}
+
+/* hover */
+.attend button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+  
+}
+.card {
+  display: flex;              /* yan-yana edir */
+  align-items: center;
+  gap: 1px;
+
+  padding: 1px;
+  border-radius: 20px;
+  color: white;
+
+  background: #6D31A3;
+  width: fit-content;         /* içinə görə genişlənir */
+}
+
+/* avatar */
+.card img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 3px solid #D4AF37;
+}
+
+/* name */
+.card h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* button */
+.card button {
+  padding: 10px 14px;
+  background: #D4AF37;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-left: auto; /* butonu sağa atır */
+}
