@@ -1,15 +1,15 @@
-
 body {
   margin: 0;
   height: 200vh; /* scroll üçün */
   font-family: Arial;
-   -webkit-user-select: none;
- -ms-user-select: none;
- user-select: none;
- -webkit-touch-callout: none;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
-/* 🔥 background kimi işləyən layer */
+/* 🔥 background layer */
 .bg {
   position: fixed;
   top: 0;
@@ -22,7 +22,20 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 
-  z-index: -1; /* arxada qalır */
+  z-index: -2;
+}
+
+/* 🔥 əlavə vignette (kənarları qaraldır) */
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+    circle,
+    rgba(0,0,0,0.1) 55%,
+    rgba(109, 49, 163, 0.45) 100%
+  );
 }
 .container {
   background-image: url("mor.png");
@@ -34,9 +47,10 @@ body {
   border-radius: 20px;
   text-align: center;
   width: 100%;
-  max-width: 460px;
+  max-width: 400px;
   color: white;
   font-family: 'TT Ramillas', serif;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 /* başlıq */
 h1 {
@@ -53,7 +67,7 @@ font-family: 'Retro Vintage', cursive;
 .timer {
   display: flex;
   justify-content: space-between;
-  gap: 1px;
+  gap: 8px;
 }
 
 /* bloklar */
@@ -62,6 +76,7 @@ font-family: 'Retro Vintage', cursive;
   padding: 15px;
   border-radius: 10px;
   position: relative;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 /* rəqəm */
@@ -89,7 +104,6 @@ font-family: 'TT Ramillas', serif;
   left: 50%;
   width: 40%;
 
-  border-bottom: 6px dotted #D4AF37; /* nöqtəli xətt */
   transform: translateX(-50%);
 }
 /* mobil optimizasiya */
@@ -132,7 +146,7 @@ font-family: 'TT Ramillas', serif;
   background-position: center;   /* ortadan hizalayır */
   background-repeat: no-repeat;  /* təkrarlanmasın */
   text-shadow: 0 0 5px #D4AF37;
-  
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
 /* 2,4 → QIZIL (gold/red vibe) */
@@ -144,6 +158,7 @@ font-family: 'TT Ramillas', serif;
   background-position: center;   /* ortadan hizalayır */
   background-repeat: no-repeat;  /* təkrarlanmasın */
   text-shadow: 0 0 5px #471f6b;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   
 }
 
@@ -179,7 +194,7 @@ font-family: 'TT Ramillas', serif;
   background-position: center;   /* ortadan hizalayır */
   background-repeat: no-repeat;  /* təkrarlanmasın */
   border: 1px solid #D4AF37; /* QIZILI vurğu */
-
+box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
   transition: 0.3s ease;
 }
 
@@ -188,15 +203,11 @@ font-family: 'TT Ramillas', serif;
   width: 60px;
   height: 60px;
 }
-.tiktok img{
-width: 90px;
-  height: 90px;
 
-}
 /* hover */
 .socials a:hover {
   transform: translateY(-4px) scale(1.08);
-  background: #471F6B; /* daha tünd mor */
+  
   box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
 }
 .attend {
@@ -214,63 +225,88 @@ width: 90px;
   transition: 0.3s ease;
 }
 
-/* Gələcəm (mor) */
-#yesBtn {
-  background: #6D31A3;
-  border: 2px solid #6D31A3;
-  color: #d4af37;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
-0 0 12px rgba(109, 49, 163, 0.5);
+/* 1 iyun */
+.album {
+  
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  flex-direction: column;
+  display: flex;
 }
 
-/* Gəlməyəcəm (qızılı) */
-#noBtn {
-  background: #D4AF37;
-  border: 2px solid #D4AF37;
-  color: #471F6B;
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4),
-0 0 12px rgba(109, 49, 163, 0.5);
+.item {
+  gap: 15px;
+  padding: 12px;
+  background-image: url("mor.png");
+  background-size: cover;        /* şəkil tam doldurur */
+  background-position: center;   /* ortadan hizalayır */
+  background-repeat: no-repeat;  /* təkrarlanmasın */
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: center;
+  
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.item img {
+  background-size: cover;        /* şəkil tam doldurur */
+  background-position: center;   /* ortadan hizalayır */
+  background-repeat: no-repeat;  /* təkrarlanmasın */
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+}
+
+.item p {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #D4AF37;
+  text-shadow: 0 0 5px rgba(109, 49, 163, 0.6);
+  text-align: justify;
+  font-family: 'TT Ramillas', serif;
+}
+
+
+/* select dizaynı */
+#langSelect {
+  padding: 1px 13px;
+  border-radius: 12px;
+  
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  
+  background-image: url("mor.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  color: #D4AF37;
+  font-size: 20px;
+  cursor: pointer;
+  
+  outline: none;
+  
+  box-shadow:
+    rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px;
+  
+  text-shadow: 0 0 5px #D4AF37;
+  
+  transition: 0.3s ease;
 }
 
 /* hover */
-.attend button:hover {
+#langSelect:hover {
   transform: scale(1.05);
-  opacity: 0.9;
-  
-}
-.card {
-  display: flex;              /* yan-yana edir */
-  align-items: center;
-  gap: 1px;
-
-  padding: 1px;
-  border-radius: 20px;
-  color: white;
-
-  background: #6D31A3;
-  width: fit-content;         /* içinə görə genişlənir */
+  filter: brightness(1.1);
 }
 
-/* avatar */
-.card img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 3px solid #D4AF37;
-}
-
-/* name */
-.card h3 {
-  margin: 0;
-  font-size: 16px;
-}
-
-/* button */
-.card button {
-  padding: 10px 14px;
-  background: #D4AF37;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-left: auto; /* butonu sağa atır */
+/* focus */
+#langSelect:focus {
+  border: 1px solid #D4AF37;
+  box-shadow: 0 0 12px rgba(109, 49, 163, 0.7);
 }
