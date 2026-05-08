@@ -23,16 +23,3 @@ document.addEventListener("copy", e => e.preventDefault());
 document.addEventListener("cut", e => e.preventDefault());
 document.addEventListener("paste", e => e.preventDefault());
 document.addEventListener("dragstart", e => e.preventDefault());
-
-const yes = document.getElementById("yesBtn");
-const no = document.getElementById("noBtn");
-
-yes.onclick = () => {
-   yes.style.boxShadow = "0 0 12px #6D31A3";
-   no.style.boxShadow = "none";
-};
-
-no.onclick = () => {
-   no.style.boxShadow = "0 0 12px #D4AF37";
-   yes.style.boxShadow = "none";
-};
