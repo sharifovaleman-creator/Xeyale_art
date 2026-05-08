@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" > 
+
+<head>
+   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+   <div class="bg"></div>
+
+<select id="langSelect"></select>
+   <a class="buttons" href="index.html"><button>geri</button></a>
+   
+   <div class="album">
+   <div class="item">
+      <img src="iyun1.jpg" alt="">
+      <p>text1</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+
+   <div class="item">
+      <img src="iyun2.jpg" alt="">
+      <p>text2</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+   
+   <div class="item">
+      <img src="iyun3.jpg" alt="">
+      <p>text3</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+   
+   <div class="item">
+      <img src="iyun4.jpg" alt="">
+      <p>text4</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+   
+   <div class="item">
+      <img src="iyun5.jpg" alt="">
+      <p>text5</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+   
+   <div class="item">
+      <img src="iyun6.jpg" alt="">
+      <p>text6</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+   
+   <div class="item">
+      <img src="iyun7.jpg" alt="">
+      <p>text7</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+   
+   <div class="item">
+      <img src="iyun8.jpg" alt="">
+      <p>text8</p>
+   </div>
+   
+   <a class="buttons" href="https://en.wikipedia.org/wiki/Childrens_Day"><button>Wikipedia-da oxu</button></a>
+
+</div>
+
+   <a class="buttons" href="index.html"><button>geri</button></a>
+<script src="main.js"></script>
+   <script>
+      const languages = [
+         { code: "az", flag: "🇦🇿" },
+         { code: "en", flag: "🇬🇧" },
+         { code: "ru", flag: "🇷🇺" },
+         { code: "ge", flag: "🇬🇪" },
+         { code: "hy", flag: "🇦🇲" }
+      ];
+      
+      document.addEventListener("DOMContentLoaded", () => {
+         const select = document.getElementById("langSelect");
+         
+         if (!select) return;
+         
+         languages.forEach(lang => {
+            const option = document.createElement("option");
+            option.value = lang.code;
+            option.textContent = lang.flag;
+            select.appendChild(option);
+         });
+         
+         select.value = localStorage.getItem("lang") || "az";
+         
+         select.addEventListener("change", () => {
+            localStorage.setItem("lang", select.value);
+         });
+      });
+   </script>
+</body>
+
+</html>

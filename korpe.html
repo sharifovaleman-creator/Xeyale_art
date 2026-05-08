@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <div class="bg"></div>
+   <select id="langSelect"></select>
+   <input id="name" placeholder="Adını yaz">
+<button onclick="check()">Yoxla</button>
+
+<div id="result"></div>
+
+   <a class="buttons" href="index.html"><button>geri</button></a>
+   <script src="main.js"></script>
+<script>
+   // korpe
+const data = [
+   { img: "korpe1.jpg", text: "Korpe 1 👶" },
+   { img: "korpe2.jpg", text: "Korpe 2 🍼" },
+   { img: "korpe3.jpg", text: "Korpe 3 🌸" },
+   { img: "korpe4.jpg", text: "Korpe 4 ⭐" },
+   { img: "korpe5.jpg", text: "Korpe 5 🔥" },
+   { img: "korpe6.jpg", text: "Korpe 6 🌙" },
+   { img: "korpe7.jpg", text: "Korpe 7 💎" },
+   { img: "korpe8.jpg", text: "Korpe 8 ⚡" },
+   { img: "korpe9.jpg", text: "Korpe 9 🎯" },
+   { img: "korpe10.jpg", text: "Korpe 10 🚀" }
+];
+
+// stabil nəticə (hər dil hərfini qəbul edir)
+function getIndex(name, len) {
+   let sum = 0;
+   
+   for (let i = 0; i < name.length; i++) {
+      sum += name.charCodeAt(i);
+   }
+   
+   return sum % len;
+}
+
+function check() {
+   let name = document.getElementById("name").value.trim().toLowerCase();
+   
+   if (!name) return;
+   
+   const index = getIndex(name, data.length);
+   const item = data[index];
+   
+   document.getElementById("result").innerHTML = `
+    <img src="${item.img}" style="width:200px;border-radius:12px;">
+    <p>${name} → ${item.text}</p>
+  `;
+}
+
+</script>
+   <script>
+      const languages = [
+         { code: "az", flag: "🇦🇿" },
+         { code: "en", flag: "🇬🇧" },
+         { code: "ru", flag: "🇷🇺" },
+         { code: "ge", flag: "🇬🇪" },
+         { code: "hy", flag: "🇦🇲" }
+      ];
+      
+      document.addEventListener("DOMContentLoaded", () => {
+         const select = document.getElementById("langSelect");
+         
+         if (!select) return;
+         
+         languages.forEach(lang => {
+            const option = document.createElement("option");
+            option.value = lang.code;
+            option.textContent = lang.flag;
+            select.appendChild(option);
+         });
+         
+         select.value = localStorage.getItem("lang") || "az";
+         
+         select.addEventListener("change", () => {
+            localStorage.setItem("lang", select.value);
+         });
+      });
+   </script>
+</body>
+
+</html>
