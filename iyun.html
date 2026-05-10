@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" > 
+
+<head>
+   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+   <div class="bg"></div>
+
+<select id="langSelect"></select>
+   <a class="buttons" href="index.html"><button>geri</button></a>
+   
+  <div class="album">
+   
+   <div class="item">
+      <img src="iyun1.jpg" alt="">
+      <p>Uşaqlar Günü ideyası 20-ci əsrin əvvəlində formalaşıb və 1925-ci ildə beynəlxalq konfransdan sonra daha da yayılıb. 1954-cü ildə BMT bu günü rəsmi şəkildə tövsiyə edib.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun2.jpg" alt="">
+      <p>Bu gün əsasən Birləşmiş Millətlər Təşkilatı tərəfindən təşviq olunub. Məqsəd uşaqların hüquqlarını qorumaq və onların rifahını artırmaqdır.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun3.jpg" alt="">
+      <p>Fərqli ölkələrdə Uşaqlar Günü fərqli tarixlərdə qeyd olunur. Türkiyədə 23 aprel, bir çox ölkədə isə 1 iyun və ya 20 noyabr kimi günlər seçilib.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun4.jpg" alt="">
+      <p>Uşaqlar Günü çox vacibdir, çünki uşaqların təhsil, sağlamlıq və təhlükəsizlik hüquqlarını xatırladır və cəmiyyətə məsuliyyət yükləyir.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun5.jpg" alt="">
+      <p>Bəzi ölkələrdə maraqlı ənənələr olur. Məsələn, uşaqlar bir gün müəllim və ya rəhbər roluna keçirlər və simvolik idarəetmə edilir.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun6.jpg" alt="">
+      <p>Məktəblərdə tədbirlər, oyunlar və festivallar keçirilir. Uşaqlar üçün xüsusi şənliklər təşkil olunur və hədiyyələr verilir.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun7.jpg" alt="">
+      <p>UNICEF kimi təşkilatlar bu günü istifadə edərək uşaqların problemlərini dünyaya çatdırır və maarifləndirmə kampaniyaları aparır.</p>
+   </div>
+   
+   <div class="item">
+      <img src="iyun8.jpg" alt="">
+      <p>Uşaqlar Günü müasir dövrdə sosial media ilə daha geniş yayılıb və məqsəd daha ədalətli, təhlükəsiz və xoşbəxt uşaqlıq yaratmaqdır.</p>
+   </div>
+   
+</div>
+   <a class="buttons" href="index.html"><button>geri</button></a>
+
+<script>
+
+const languages = [
+  { code: "az", flag: "🇦🇿" },
+  { code: "en", flag: "🇬🇧" },
+  { code: "ru", flag: "🇷🇺" },
+  { code: "ge", flag: "🇬🇪" },
+  { code: "hy", flag: "🇦🇲" }
+];
+
+const translations = {
+
+  az: {
+    back: "geri",
+
+    text1: "Uşaqlar Günü ideyası 20-ci əsrin əvvəlində formalaşıb və 1925-ci ildə beynəlxalq konfransdan sonra daha da yayılıb. 1954-cü ildə BMT bu günü rəsmi şəkildə tövsiyə edib.",
+
+    text2: "Bu gün əsasən Birləşmiş Millətlər Təşkilatı tərəfindən təşviq olunub. Məqsəd uşaqların hüquqlarını qorumaq və onların rifahını artırmaqdır.",
+
+    text3: "Fərqli ölkələrdə Uşaqlar Günü fərqli tarixlərdə qeyd olunur. Türkiyədə 23 aprel, bir çox ölkədə isə 1 iyun və ya 20 noyabr kimi günlər seçilib.",
+
+    text4: "Uşaqlar Günü çox vacibdir, çünki uşaqların təhsil, sağlamlıq və təhlükəsizlik hüquqlarını xatırladır və cəmiyyətə məsuliyyət yükləyir.",
+
+    text5: "Bəzi ölkələrdə maraqlı ənənələr olur. Məsələn, uşaqlar bir gün müəllim və ya rəhbər roluna keçirlər və simvolik idarəetmə edilir.",
+
+    text6: "Məktəblərdə tədbirlər, oyunlar və festivallar keçirilir. Uşaqlar üçün xüsusi şənliklər təşkil olunur və hədiyyələr verilir.",
+
+    text7: "UNICEF kimi təşkilatlar bu günü istifadə edərək uşaqların problemlərini dünyaya çatdırır və maarifləndirmə kampaniyaları aparır.",
+
+    text8: "Uşaqlar Günü müasir dövrdə sosial media ilə daha geniş yayılıb və məqsəd daha ədalətli, təhlükəsiz və xoşbəxt uşaqlıq yaratmaqdır."
+  },
+
+  en: {
+    back: "back",
+
+    text1: "The idea of Children's Day emerged in the early 20th century and became more widespread after an international conference in 1925. In 1954, the UN officially recommended this day.",
+
+    text2: "This day was mainly promoted by the United Nations. Its goal is to protect children's rights and improve their well-being.",
+
+    text3: "Children's Day is celebrated on different dates in different countries. In Turkey it is celebrated on April 23, while many countries choose June 1 or November 20.",
+
+    text4: "Children's Day is very important because it reminds society about children's rights to education, health, and safety.",
+
+    text5: "Some countries have interesting traditions. For example, children symbolically take the roles of teachers or leaders for one day.",
+
+    text6: "Schools organize events, games, and festivals. Special celebrations and gifts are prepared for children.",
+
+    text7: "Organizations such as UNICEF use this day to raise awareness about children's issues around the world.",
+
+    text8: "Today, Children's Day has spread even more through social media, aiming to create a fairer, safer, and happier childhood."
+  },
+
+  ru: {
+    back: "назад",
+
+    text1: "Идея Дня детей появилась в начале XX века и получила распространение после международной конференции 1925 года. В 1954 году ООН официально рекомендовала этот день.",
+
+    text2: "Этот день в основном продвигался Организацией Объединённых Наций. Его цель — защищать права детей и улучшать их благополучие.",
+
+    text3: "День детей отмечается в разные даты в разных странах. В Турции — 23 апреля, а во многих странах — 1 июня или 20 ноября.",
+
+    text4: "День детей очень важен, потому что напоминает обществу о правах детей на образование, здоровье и безопасность.",
+
+    text5: "В некоторых странах существуют интересные традиции. Например, дети на один день символически становятся учителями или руководителями.",
+
+    text6: "В школах проводятся мероприятия, игры и фестивали. Для детей организуются праздники и дарятся подарки.",
+
+    text7: "Такие организации, как ЮНИСЕФ, используют этот день для привлечения внимания к проблемам детей во всём мире.",
+
+    text8: "Сегодня День детей стал ещё популярнее благодаря социальным сетям, а цель — создать более справедливое, безопасное и счастливое детство."
+  },
+
+  ge: {
+    back: "უკან",
+
+    text1: "ბავშვთა დღის იდეა მე-20 საუკუნის დასაწყისში გაჩნდა და 1925 წლის საერთაშორისო კონფერენციის შემდეგ უფრო გავრცელდა. 1954 წელს გაერომ ოფიციალურად ურჩია ამ დღის აღნიშვნა.",
+
+    text2: "ეს დღე ძირითადად გაერთიანებული ერების ორგანიზაციის მიერ იყო მხარდაჭერილი. მიზანია ბავშვთა უფლებების დაცვა და მათი კეთილდღეობის გაუმჯობესება.",
+
+    text3: "ბავშვთა დღე სხვადასხვა ქვეყანაში სხვადასხვა თარიღზე აღინიშნება. თურქეთში 23 აპრილს, ხოლო ბევრ ქვეყანაში 1 ივნისს ან 20 ნოემბერს.",
+
+    text4: "ბავშვთა დღე ძალიან მნიშვნელოვანია, რადგან ის საზოგადოებას ახსენებს ბავშვთა განათლების, ჯანმრთელობისა და უსაფრთხოების უფლებებს.",
+
+    text5: "ზოგ ქვეყანაში საინტერესო ტრადიციები არსებობს. მაგალითად, ბავშვები ერთი დღით მასწავლებლების ან ლიდერების როლს ირგებენ.",
+
+    text6: "სკოლებში ტარდება ღონისძიებები, თამაშები და ფესტივალები. ბავშვებისთვის ეწყობა სპეციალური ზეიმები და საჩუქრები.",
+
+    text7: "UNICEF-ის მსგავსი ორგანიზაციები ამ დღეს იყენებენ ბავშვთა პრობლემებზე ცნობიერების ასამაღლებლად.",
+
+    text8: "დღეს ბავშვთა დღე სოციალური მედიის საშუალებით კიდევ უფრო გავრცელდა და მიზანია უფრო სამართლიანი, უსაფრთხო და ბედნიერი ბავშვობის შექმნა."
+  },
+
+  hy: {
+    back: "հետ",
+
+    text1: "Երեխաների օրվա գաղափարը ձևավորվել է 20-րդ դարի սկզբին և ավելի լայն տարածում ստացել 1925 թվականի միջազգային համաժողովից հետո։ 1954 թվականին ՄԱԿ-ը պաշտոնապես առաջարկեց նշել այս օրը։",
+
+    text2: "Այս օրը հիմնականում խթանվել է Միավորված ազգերի կազմակերպության կողմից։ Նպատակն է պաշտպանել երեխաների իրավունքները և բարելավել նրանց բարեկեցությունը։",
+
+    text3: "Երեխաների օրը տարբեր երկրներում նշվում է տարբեր օրերի։ Թուրքիայում՝ ապրիլի 23-ին, իսկ շատ երկրներում՝ հունիսի 1-ին կամ նոյեմբերի 20-ին։",
+
+    text4: "Երեխաների օրը շատ կարևոր է, քանի որ հիշեցնում է հասարակությանը երեխաների կրթության, առողջության և անվտանգության իրավունքների մասին։",
+
+    text5: "Որոշ երկրներում կան հետաքրքիր ավանդույթներ։ Օրինակ՝ երեխաները մեկ օրով դառնում են ուսուցիչներ կամ ղեկավարներ։",
+
+    text6: "Դպրոցներում կազմակերպվում են միջոցառումներ, խաղեր և փառատոններ։ Երեխաների համար կազմակերպվում են տոնակատարություններ և նվերներ։",
+
+    text7: "UNICEF-ի նման կազմակերպությունները այս օրը օգտագործում են երեխաների խնդիրների մասին իրազեկվածությունը բարձրացնելու համար։",
+
+    text8: "Այսօր Երեխաների օրը սոցիալական մեդիայի շնորհիվ ավելի լայն տարածում ունի և նպատակ ունի ստեղծել ավելի արդար, անվտանգ և երջանիկ մանկություն։"
+  }
+
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const select = document.getElementById("langSelect");
+
+  languages.forEach(lang => {
+
+    const option = document.createElement("option");
+
+    option.value = lang.code;
+    option.textContent = lang.flag;
+
+    select.appendChild(option);
+
+  });
+
+  const savedLang = localStorage.getItem("lang") || "az";
+
+  select.value = savedLang;
+
+  loadLanguage(savedLang);
+
+  select.addEventListener("change", () => {
+
+    localStorage.setItem("lang", select.value);
+
+    loadLanguage(select.value);
+
+  });
+
+});
+
+function loadLanguage(lang){
+
+  const t = translations[lang];
+
+  document.querySelectorAll(".buttons button").forEach(btn => {
+    btn.textContent = t.back;
+  });
+
+  const texts = document.querySelectorAll(".item p");
+
+  texts[0].textContent = t.text1;
+  texts[1].textContent = t.text2;
+  texts[2].textContent = t.text3;
+  texts[3].textContent = t.text4;
+  texts[4].textContent = t.text5;
+  texts[5].textContent = t.text6;
+  texts[6].textContent = t.text7;
+  texts[7].textContent = t.text8;
+
+}
+
+</script>

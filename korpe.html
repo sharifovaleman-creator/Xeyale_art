@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+   
+   <link rel="stylesheet" href="style.css">
+   
+</head>
+
+<body>
+   
+   <div class="bg"></div>
+   
+   <select id="langSelect"></select>
+   
+   <input id="name">
+   
+   <button id="checkBtn" onclick="check()"></button>
+   
+   <div id="result"></div>
+   
+   <a class="buttons" href="index.html">
+      <button id="backBtn"></button>
+   </a>
+   
+   <script>
+      const languages = [
+         { code: "az", flag: "🇦🇿" },
+         { code: "en", flag: "🇬🇧" },
+         { code: "ru", flag: "🇷🇺" },
+         { code: "ge", flag: "🇬🇪" },
+         { code: "hy", flag: "🇦🇲" }
+      ];
+      
+      const images = [
+         "korpe1.jpg",
+         "korpe2.jpg",
+         "korpe3.jpg",
+         "korpe4.jpg",
+         "korpe5.jpg",
+         "korpe6.jpg",
+         "korpe7.jpg",
+         "korpe8.jpg",
+         "korpe9.jpg",
+         "korpe10.jpg"
+      ];
+      
+      const translations = {
+   
+   az: {
+      placeholder: "Adını yaz",
+      button: "Yoxla",
+      back: "geri",
+      
+      data: [
+         
+         "Maraqlı körpə ruhuna sahibsen. Hər şeyi araşdırmaq, hər detalın arxasındakı sirri öyrənmək istəyirsən. İnsanlar sadəcə baxanda sən hiss etməyə çalışırsan. İçində heç böyüməyən “niyə?” sualı var ✨",
+         
+         "Xəyalpərəst körpə ruhuna sahibsen. Bəzən reallıqdan çox öz qurduğun dünyada yaşayırsan. Mahnılar, gecə işıqları və buludlar sənə başqa kainat kimi gəlir ☁️🌙",
+         
+         "Yumşaq qəlbli körpə ruhuna sahibsen. İnsanların hisslərini çox dərindən anlayırsan. Birinə “necəsən?” deyəndə sadəcə söz üçün demirsən, həqiqətən maraqlanırsan 🧸",
+         
+         "Enerjili və dəli-dolu körpə ruhuna sahibsen. Sənin yanında həyat daha rəngli olur. Darıxdırıcı yerləri belə əyləncəyə çevirə bilirsən ⚡",
+         
+         "Köhnə ruhlu körpə ruhuna sahibsen. Sanki bu dövr sənə bir az yad gəlir. Yağışlı hava, köhnə musiqilər və sakit gecələr sənə qəribə bir huzur verir 🎞️",
+         
+         "Sirli körpə ruhuna sahibsen. İnsanlar səni tam anlaya bilmir çünki hər zaman içində gizli saxladığın başqa bir dünya var 🌌",
+         
+         "Yaradıcı körpə ruhuna sahibsen. Beynin heç vaxt susmur. Bir şəkil, bir musiqi və ya sadə bir söz belə səndə yeni ideyalar yaradır 🎨",
+         
+         "Romantik körpə ruhuna sahibsen. Kiçik detallardan mutlu ola bilirsən. Gecə lampaları, mesaj bildirimləri və gözəl sözlər sənin üçün çox şey ifadə edir ✨",
+         
+         "Güclü görünən amma içində həssas bir körpə gizlədən ruha sahibsen. İnsanlar səni sərt görsə də, əslində ən çox sən qırılırsan 🌧️",
+         
+         "Azad ruhlu körpə ruhuna sahibsen. Qaydalar içində sıxılırsan. Ruhun sanki davamlı yeni yerlər, yeni hisslər və yeni hekayələr axtarır 🕊️"
+         
+      ]
+   },
+   
+   en: {
+      placeholder: "Write your name",
+      button: "Check",
+      back: "back",
+      
+      data: [
+         
+         "You have a curious child spirit. You love exploring everything and discovering the secret behind every detail. When others simply look, you try to truly feel and understand. Deep inside you, the question “why?” never grows old ✨",
+         
+         "You have a dreamy child spirit. Sometimes you live more in the world you created than in reality itself. Songs, night lights, and clouds feel like another universe to you ☁️🌙",
+         
+         "You have a soft-hearted child spirit. You deeply understand people's emotions. When you ask someone “how are you?”, you genuinely care about the answer 🧸",
+         
+         "You have an energetic and chaotic child spirit. Life becomes more colorful around you. Even boring places can turn into fun when you're there ⚡",
+         
+         "You have an old-soul child spirit. It feels like this era doesn’t completely belong to you. Rainy weather, old music, and quiet nights give you a strange sense of peace 🎞️",
+         
+         "You have a mysterious child spirit. People can never fully understand you because there’s always another hidden world inside your mind 🌌",
+         
+         "You have a creative child spirit. Your mind never stays silent. A picture, a song, or even a simple word can inspire brand new ideas in you 🎨",
+         
+         "You have a romantic child spirit. Small details can make you truly happy. Night lamps, message notifications, and beautiful words mean a lot to you ✨",
+         
+         "You have a child spirit that looks strong outside but hides sensitivity inside. People may see you as tough, but in reality, you are the one who gets hurt the most 🌧️",
+         
+         "You have a free child spirit. Rules make you feel trapped. Your soul constantly searches for new places, new feelings, and new stories 🕊️"
+         
+      ]
+   },
+   
+   ru: {
+      placeholder: "Напиши своё имя",
+      button: "Проверить",
+      back: "назад",
+      
+      data: [
+         
+         "У тебя любопытная детская душа. Ты любишь всё исследовать и узнавать тайны за каждой деталью. Пока другие просто смотрят, ты пытаешься почувствовать и понять глубже ✨",
+         
+         "У тебя мечтательная детская душа. Иногда ты живёшь больше в своём воображаемом мире, чем в реальности. Музыка, ночные огни и облака кажутся тебе другой вселенной ☁️🌙",
+         
+         "У тебя мягкая и добрая детская душа. Ты очень тонко понимаешь чувства людей. Когда ты спрашиваешь «как ты?», тебе действительно важно услышать ответ 🧸",
+         
+         "У тебя энергичная и безумно весёлая детская душа. Рядом с тобой жизнь становится ярче. Даже скучные места превращаются в веселье ⚡",
+         
+         "У тебя душа старой души. Кажется, будто это время тебе немного чуждо. Дождь, старая музыка и тихие ночи приносят тебе особое спокойствие 🎞️",
+         
+         "У тебя загадочная детская душа. Люди не могут полностью понять тебя, потому что внутри тебя всегда скрыт другой мир 🌌",
+         
+         "У тебя творческая детская душа. Твой разум никогда не молчит. Картина, музыка или даже простое слово могут вдохновить тебя на новые идеи 🎨",
+         
+         "У тебя романтичная детская душа. Маленькие детали способны сделать тебя счастливым. Ночные лампы, уведомления и красивые слова значат для тебя очень многое ✨",
+         
+         "Ты выглядишь сильным человеком, но внутри скрываешь очень чувствительную детскую душу. Люди считают тебя жёстким, хотя именно ты ранишься сильнее всех 🌧️",
+         
+         "У тебя свободная детская душа. Правила заставляют тебя чувствовать себя в ловушке. Твоя душа постоянно ищет новые места, чувства и истории 🕊️"
+         
+      ]
+   },
+   
+   ge: {
+      placeholder: "შეიყვანე სახელი",
+      button: "შემოწმება",
+      back: "უკან",
+      
+      data: [
+         
+         "შენ ცნობისმოყვარე ბავშვური სული გაქვს. ყველაფრის გამოკვლევა და თითოეული დეტალის უკან დამალული საიდუმლოს გაგება გინდა ✨",
+         
+         "შენ მეოცნებე ბავშვური სული გაქვს. ზოგჯერ რეალობაზე მეტად შენს წარმოსახვით სამყაროში ცხოვრობ ☁️🌙",
+         
+         "შენ თბილი და ნაზი ბავშვური სული გაქვს. ადამიანების ემოციებს ძალიან ღრმად გრძნობ 🧸",
+         
+         "შენ ენერგიული და მხიარული ბავშვური სული გაქვს. შენთან ერთად ცხოვრება უფრო ფერადი ხდება ⚡",
+         
+         "შენ ძველი სულის მქონე ბავშვური სული გაქვს. წვიმიანი ამინდი და ძველი მუსიკა სიმშვიდეს განიჭებს 🎞️",
+         
+         "შენ იდუმალი ბავშვური სული გაქვს. ადამიანებს ბოლომდე არ ესმით შენი, რადგან შენში სხვა სამყარო იმალება 🌌",
+         
+         "შენ შემოქმედებითი ბავშვური სული გაქვს. შენი გონება არასდროს ჩერდება 🎨",
+         
+         "შენ რომანტიკული ბავშვური სული გაქვს. პატარა დეტალებიც კი დიდ ბედნიერებას განიჭებს ✨",
+         
+         "გარედან ძლიერად ჩანხარ, მაგრამ ძალიან მგრძნობიარე ხარ 🌧️",
+         
+         "შენ თავისუფალი ბავშვური სული გაქვს. წესები გაკავებს და შენი სული ახალ ადგილებსა და ისტორიებს ეძებს 🕊️"
+         
+      ]
+   },
+   
+   hy: {
+      placeholder: "Գրիր անունդ",
+      button: "Ստուգել",
+      back: "հետ",
+      
+      data: [
+         
+         "Դու ունես հետաքրքրասեր մանկական հոգի։ Դու սիրում ես բացահայտել ամեն ինչ և հասկանալ յուրաքանչյուր մանրուքի գաղտնիքը ✨",
+         
+         "Դու ունես երազկոտ մանկական հոգի։ Երբեմն դու ավելի շատ ապրում ես քո երևակայության աշխարհում, քան իրականության մեջ ☁️🌙",
+         
+         "Դու ունես նուրբ և բարի մանկական հոգի։ Դու խորապես հասկանում ես մարդկանց զգացմունքները 🧸",
+         
+         "Դու ունես էներգիայով լի և խենթ մանկական հոգի։ Քո կողքին կյանքը դառնում է ավելի գունավոր ⚡",
+         
+         "Դու ունես հին հոգով մանկական հոգի։ Անձրևոտ եղանակը և հին երաժշտությունը քեզ խաղաղություն են տալիս 🎞️",
+         
+         "Դու ունես խորհրդավոր մանկական հոգի։ Մարդիկ երբեք ամբողջությամբ չեն հասկանում քեզ 🌌",
+         
+         "Դու ունես ստեղծագործ մանկական հոգի։ Քո միտքը երբեք չի լռում 🎨",
+         
+         "Դու ունես ռոմանտիկ մանկական հոգի։ Փոքրիկ մանրուքներն անգամ կարող են քեզ երջանկացնել ✨",
+         
+         "Դու ուժեղ ես երևում, բայց ներսում շատ զգայուն ես 🌧️",
+         
+         "Դու ունես ազատ մանկական հոգի։ Քո հոգին միշտ նոր վայրեր և պատմություններ է փնտրում 🕊️"
+         
+      ]
+   }
+   
+};
+      const select = document.getElementById("langSelect");
+      
+      languages.forEach(lang => {
+         
+         const option = document.createElement("option");
+         
+         option.value = lang.code;
+         option.textContent = lang.flag;
+         
+         select.appendChild(option);
+         
+      });
+      
+      let currentLang = localStorage.getItem("lang") || "az";
+      
+      if (!translations[currentLang]) {
+         currentLang = "az";
+      }
+      
+      select.value = currentLang;
+      
+      loadLanguage(currentLang);
+      
+      select.addEventListener("change", () => {
+         
+         currentLang = select.value;
+         
+         localStorage.setItem("lang", currentLang);
+         
+         loadLanguage(currentLang);
+         
+      });
+      
+      function loadLanguage(lang) {
+         
+         const t = translations[lang];
+         
+         document.getElementById("name").placeholder = t.placeholder;
+         
+         document.getElementById("checkBtn").textContent = t.button;
+         
+         document.getElementById("backBtn").textContent = t.back;
+         
+      }
+      
+      function getIndex(name, len) {
+         
+         let sum = 0;
+         
+         for (let i = 0; i < name.length; i++) {
+            sum += name.charCodeAt(i);
+         }
+         
+         return sum % len;
+         
+      }
+      
+      function check() {
+         
+         const name = document.getElementById("name").value.trim();
+         
+         if (!name) return;
+         
+         const index = getIndex(name.toLowerCase(), images.length);
+         
+         const text = translations[currentLang].data[index];
+         
+         document.getElementById("result").innerHTML = `
+  
+    <img src="${images[index]}"
+    style="width:220px;border-radius:16px;margin-top:20px;">
+    
+    <p style="margin-top:15px;">
+      ${name} → ${text}
+    </p>
+    
+  `;
+         
+      }
+   </script>
+   
+</body>
+
+</html>

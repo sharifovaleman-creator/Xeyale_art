@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Xatirələr</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Georgia', serif;
+  min-height:100vh;
+  overflow:hidden;
+
+  background:#fcfcfc;
+  color:#333;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  position:relative;
+
+  -webkit-user-select:none;
+  user-select:none;
+}
+
+/* Background */
+
+.bg{
+  position:absolute;
+  inset:0;
+
+  background:
+  radial-gradient(circle at top left,
+  rgba(234,84,19,.12), transparent 35%),
+
+  radial-gradient(circle at bottom right,
+  rgba(0,115,184,.12), transparent 35%),
+
+  #fcfcfc;
+
+  animation:bgMove 10s ease-in-out infinite alternate;
+}
+
+.bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  background:linear-gradient(
+    to bottom,
+    rgba(255,255,255,.7),
+    rgba(255,255,255,.2)
+  );
+}
+
+@keyframes bgMove{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.05);
+  }
+}
+
+/* floating particles */
+
+.particle{
+  position:absolute;
+
+  width:6px;
+  height:6px;
+
+  border-radius:50%;
+
+  background:#EA5413;
+
+  opacity:.15;
+
+  animation:float linear infinite;
+}
+
+@keyframes float{
+  from{
+    transform:translateY(100vh) scale(0);
+  }
+  to{
+    transform:translateY(-120vh) scale(1.5);
+  }
+}
+
+/* main card */
+
+.container{
+  position:relative;
+  z-index:2;
+
+  width:90%;
+  max-width:420px;
+
+  padding:35px 25px;
+
+  border-radius:30px;
+
+  background:#ffffff;
+
+  border:1px solid rgba(234,84,19,.12);
+
+  box-shadow:
+  0 10px 30px rgba(234,84,19,.08),
+  0 5px 15px rgba(0,115,184,.08);
+
+  text-align:center;
+
+  animation:cardShow 1s ease;
+}
+
+@keyframes cardShow{
+  from{
+    opacity:0;
+    transform:translateY(40px) scale(.92);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* title */
+
+.title{
+  font-size:32px;
+  font-weight:900;
+
+  margin-bottom:12px;
+
+  color:#EA5413;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+}
+
+/* text */
+
+.text{
+  font-size:15px;
+  line-height:1.8;
+
+  color:#555;
+
+  margin-bottom:30px;
+}
+
+/* countdown */
+
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+
+  margin-bottom:28px;
+}
+
+.timeBox{
+  flex:1;
+
+  padding:14px 6px;
+
+  border-radius:16px;
+
+  background:#ffffff;
+
+  border:1px solid #f0f0f0;
+
+  box-shadow:0 4px 10px rgba(0,0,0,.04);
+}
+
+.timeBox h2{
+  font-size:24px;
+  color:#0073B8;
+}
+
+.timeBox span{
+  font-size:10px;
+
+  color:#777;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+}
+
+/* select */
+
+#langSelect{
+  padding:10px 14px;
+
+  border-radius:12px;
+
+  border:1px solid rgba(234,84,19,.25);
+
+  background:#fff;
+
+  color:#0073B8;
+
+  font-size:15px;
+  font-weight:600;
+
+  outline:none;
+
+  transition:.3s;
+}
+
+#langSelect:hover{
+  border-color:#EA5413;
+
+  transform:translateY(-2px);
+
+  box-shadow:0 4px 10px rgba(234,84,19,.08);
+}
+
+#langSelect option{
+  background:#fff;
+  color:#333;
+}
+
+/* buttons */
+
+.buttons button{
+  margin-top:14px;
+
+  padding:13px 28px;
+
+  border:none;
+  border-radius:14px;
+
+  background:linear-gradient(
+    135deg,
+    #EA5413,
+    #FF7E47
+  );
+
+  color:#fff;
+
+  font-size:16px;
+  font-weight:700;
+
+  font-family:'Georgia', serif;
+
+  cursor:pointer;
+
+  box-shadow:
+  0 4px 12px rgba(234,84,19,.15);
+
+  transition:.3s ease;
+}
+
+.buttons button:hover{
+  transform:translateY(-3px) scale(1.03);
+
+  filter:brightness(1.05);
+
+  box-shadow:
+  0 8px 18px rgba(234,84,19,.2);
+}
+
+.buttons button:active{
+  transform:scale(.97);
+}
+
+/* bottom */
+
+.bottom{
+  margin-top:18px;
+
+  font-size:12px;
+
+  color:#999;
+
+  letter-spacing:2px;
+}
+
+/* mobile */
+
+@media(max-width:500px){
+
+  .container{
+    padding:28px 20px;
+  }
+
+  .title{
+    font-size:26px;
+  }
+
+  .timeBox h2{
+    font-size:22px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- particles -->
+<script>
+for(let i=0;i<35;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDuration=(5+Math.random()*10)+"s";
+  p.style.animationDelay=Math.random()*5+"s";
+
+  document.body.appendChild(p);
+}
+</script>
+
+<div class="container">
+
+  <h1 class="title">XATİRƏLƏR</h1>
+
+  <p class="text">
+    Yaxında sərgidən xüsusi xatirələr burada paylaşılacaq ✨  
+    Fotolar, videolar və unudulmaz anlar çox yaxında əlavə olunacaq.
+  </p>
+
+  <div class="countdown">
+
+    <div class="timeBox">
+      <h2 id="days">00</h2>
+      <span>GÜN</span>
+    </div>
+
+    <div class="timeBox">
+      <h2 id="hours">00</h2>
+      <span>SAAT</span>
+    </div>
+
+    <div class="timeBox">
+      <h2 id="minutes">00</h2>
+      <span>DƏQİQƏ</span>
+    </div>
+
+  </div>
+
+  <select id="langSelect"></select>
+
+  <br>
+
+  <a class="buttons" href="index.html">
+    <button>GERİ</button>
+  </a>
+
+  <div class="bottom">
+    soon...
+  </div>
+
+</div>
+
+<script>
+
+const languages = [
+   { code: "az", flag: "🇦🇿" },
+   { code: "en", flag: "🇬🇧" },
+   { code: "ru", flag: "🇷🇺" },
+   { code: "ge", flag: "🇬🇪" },
+   { code: "hy", flag: "🇦🇲" }
+];
+const translations = {
+  az: {
+    title: "XATİRƏLƏR",
+    text: "Yaxında sərgidən xüsusi xatirələr burada paylaşılacaq ✨ Fotolar, videolar və unudulmaz anlar çox yaxında əlavə olunacaq.",
+    day: "GÜN",
+    hour: "SAAT",
+    minute: "DƏQİQƏ",
+    back: "GERİ",
+    soon: "tezliklə..."
+  },
+  
+  en: {
+    title: "MEMORIES",
+    text: "Special memories from the exhibition will be shared here soon ✨ Photos, videos and unforgettable moments will be added very soon.",
+    day: "DAY",
+    hour: "HOUR",
+    minute: "MINUTE",
+    back: "BACK",
+    soon: "coming soon..."
+  },
+  
+  ru: {
+    title: "ВОСПОМИНАНИЯ",
+    text: "Скоро здесь появятся особые воспоминания с выставки ✨ Фотографии, видео и незабываемые моменты будут добавлены совсем скоро.",
+    day: "ДЕНЬ",
+    hour: "ЧАС",
+    minute: "МИНУТА",
+    back: "НАЗАД",
+    soon: "скоро..."
+  },
+  
+  ge: {
+    title: "მოგონებები",
+    text: "გამოფენის განსაკუთრებული მოგონებები მალე აქ განთავსდება ✨ ფოტოები, ვიდეოები და დაუვიწყარი მომენტები ძალიან მალე დაემატება.",
+    day: "დღე",
+    hour: "საათი",
+    minute: "წუთი",
+    back: "უკან",
+    soon: "მალე..."
+  },
+  
+  hy: {
+    title: "ՀԻՇԵՐ",
+    text: "Շուտով այստեղ կկիսվեն ցուցահանդեսի հատուկ հիշողությունները ✨ Լուսանկարները, տեսանյութերը և անմոռանալի պահերը շատ շուտով կավելացվեն։",
+    day: "ՕՐ",
+    hour: "ԺԱՄ",
+    minute: "ՐՈՊԵ",
+    back: "ՀԵՏ",
+    soon: "շուտով..."
+  }
+};
+
+/* elements */
+
+const title = document.querySelector(".title");
+const text = document.querySelector(".text");
+
+const labels = document.querySelectorAll(".timeBox span");
+
+const backBtn = document.querySelector(".buttons button");
+
+const bottom = document.querySelector(".bottom");
+
+const select = document.getElementById("langSelect");
+
+/* change language */
+
+function setLanguage(lang) {
+  
+  const t = translations[lang];
+  
+  title.textContent = t.title;
+  
+  text.textContent = t.text;
+  
+  labels[0].textContent = t.day;
+  labels[1].textContent = t.hour;
+  labels[2].textContent = t.minute;
+  
+  backBtn.textContent = t.back;
+  
+  bottom.textContent = t.soon;
+  
+  localStorage.setItem("lang", lang);
+}
+
+/* first load */
+
+const savedLang = localStorage.getItem("lang") || "az";
+
+setLanguage(savedLang);
+
+select.value = savedLang;
+
+/* when changed */
+
+select.addEventListener("change", () => {
+  setLanguage(select.value);
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+
+   const select = document.getElementById("langSelect");
+
+   languages.forEach(lang => {
+      const option = document.createElement("option");
+      option.value = lang.code;
+      option.textContent = lang.flag;
+      select.appendChild(option);
+   });
+
+   select.value = localStorage.getItem("lang") || "az";
+
+   select.addEventListener("change", () => {
+      localStorage.setItem("lang", select.value);
+   });
+
+});
+
+/* countdown */
+
+const targetDate = new Date("2026-06-03 00:00:00").getTime();
+
+function updateCountdown(){
+
+  const now = new Date().getTime();
+  const distance = targetDate - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+
+  document.getElementById("days").innerText = days;
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+}
+
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+</script>
+
+</body>
+</html>
