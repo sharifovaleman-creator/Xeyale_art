@@ -1,0 +1,402 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Georgia', serif;
+  background-color: #fcfcfc; /* Təmiz ağ fon */
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  /* Afişadakı rəngləri xatırladan yumşaq gradient fon */
+  background: radial-gradient(circle at top left, rgba(234, 84, 19, 0.05), transparent),
+              radial-gradient(circle at bottom right, rgba(0, 115, 184, 0.05), transparent);
+  z-index: -2;
+}
+
+.bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
+}
+/* Ana konteyner */
+.container {
+  background: #EA5413;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 30px;
+  text-align: center;
+  width: 90%;
+  max-width: 400px;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(234, 84, 19, 0.1), 0 5px 15px rgba(0, 115, 184, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+}
+
+/* Başlıq */
+h1 {
+  margin-bottom: 25px;
+  color: #fff; /* Afişadakı narıncı */
+  font-family: 'Georgia', serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 900;
+  font-size: 22px;
+}
+
+/* DƏYİŞİKLİK BURADADIR: 
+   .box-ların ana elementinə (parent) bu xüsusiyyətləri veririk 
+*/
+.timer { 
+  display: flex;
+  justify-content: center;
+  gap: 8px; /* qutular arası məsafə */
+  width: 100%;
+}
+
+/* Timer qutuları */
+.box {
+  flex: 1; /* bütün qutular eyni ölçüdə olur */
+  padding: 12px 5px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  
+  /* Qutunun daxilində rəqəm və sözü alt-alta mərkəzləmək üçün */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Rəqəmlər (31, 11 və s.) */
+.number {
+  font-size: 24px; /* yan-yana sığması üçün bir az kiçiltdik */
+  font-weight: bold;
+  color: #0073B8; /* Afişadakı göy */
+  line-height: 1;
+}
+
+/* "Gün, Saat" yazıları üçün əlavə (əgər klasınız varsa) */
+.label {
+  font-size: 10px;
+  color: #777;
+  text-transform: uppercase;
+  margin-top: 4px;
+  
+}
+
+/* mobil optimizasiya */
+@media (max-width: 500px) {
+  .number {
+    font-size: 22px;
+  }
+}
+/* 🔥 Düymələr bloku */
+.buttons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.buttons button {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  border: none;
+  font-family: 'Georgia', serif; /* Afişadakı serif yazı növünə uyğun */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 1, 3, 5-ci düymələr -> Afişadakı NARINCI tonu */
+.buttons button:nth-child(odd) {
+  background: linear-gradient(135deg, #EA5413, #FF7E47);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Hover effekti */
+.buttons button:hover {
+  transform: scale(1.02);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔥 Sosial Media İkonları */
+.socials {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.socials a {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Daha yumşaq, dairəvi görünüş */
+  background: white;
+  border: 2px solid #EA5413; /* Narıncı kənar xətti */
+  box-shadow: 0 4px 8px rgba(234, 84, 19, 0.1);
+  transition: 0.3s ease;
+}
+
+.socials img {
+  width: 35px;
+  height: 35px;
+  /* Əgər ikonların rəngini dəyişmək istəsəniz filter istifadə edə bilərsiz */
+}
+
+.socials a:hover {
+  transform: translateY(-5px);
+  background-color: #fdf2ee; /* Çox açıq narıncı fon */
+  box-shadow: 0 6px 12px rgba(234, 84, 19, 0.2);
+}
+
+/* 🔥 Qeydiyyat (Attend) düymələri */
+.attend {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.attend button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.3s ease;
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  color: #333;
+}
+
+.attend button:hover {
+  background: #eee;
+  border-color: #EA5413;
+  color: #EA5413;
+}
+
+
+/* 1 iyun */
+.album {
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+  flex-direction: column;
+  display: flex;
+}
+
+.item {
+  gap: 15px;
+  padding: 12px;
+  /* Şəkil əvəzinə təmiz ağ fon */
+  background-color: #ffffff;
+  background-image: none;
+  border-radius: 14px;
+  overflow: hidden;
+  text-align: center;
+  
+  /* Bənövşəyi kölgə əvəzinə yüngül boz kölgə */
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  /* Narıncı incə kənar xətti */
+  border: 1px solid rgba(234, 84, 19, 0.1);
+}
+
+.item img {
+  width: 100%;
+  height: auto;       /* Hündürlüyü sabit saxlamırıq ki, şəkil sıxılmasın */
+  max-height: 250px;  /* Şəkil həddindən artıq böyükdürsə, maksimum hündürlük qoyuruq */
+  object-fit: contain; /* Şəkli kəsmir, çərçivəyə tam sığdırır */
+  border-radius: 8px;
+  background-color: #f9f9f9; /* Şəkil tam sığanda kənarlarda qalan boşluq üçün yüngül rəng */
+}
+
+.item p {
+  padding: 12px;
+  font-size: 13px;
+  line-height: 1.6;
+  /* Qızılı əvəzinə afişadakı Göy rəng */
+  color: #0073B8;
+  /* Bənövşəyi tekst kölgəsi silindi */
+  text-shadow: none;
+  text-align: justify;
+  /* TT Ramillas əvəzinə klassik Georgia */
+  font-family: 'Georgia', serif;
+}
+
+/* select dizaynı */
+/* ===== DİL SEÇİMİ (langSelect) ===== */
+#langSelect {
+  padding: 5px 15px;
+  border-radius: 12px;
+  
+  /* Afişadakı narıncı rəngdə incə kənar xətti */
+  border: 1px solid rgba(234, 84, 19, 0.4);
+  
+  /* Fonu təmiz ağ və ya çox açıq göy edirik */
+  background-color: #ffffff;
+  background-image: none; /* Köhnə mor.png-ni ləğv edirik */
+  
+  color: #0073B8; /* Afişadakı göy rəng */
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  
+  outline: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+/* hover */
+#langSelect:hover {
+  transform: translateY(-2px);
+  border-color: #EA5413;
+  box-shadow: 0 6px 12px rgba(234, 84, 19, 0.1);
+}
+
+/* focus */
+#langSelect:focus {
+  border: 1.5px solid #EA5413;
+  box-shadow: 0 0 10px rgba(234, 84, 19, 0.2);
+}
+
+/* ===== INPUT SAHƏSİ ===== */
+input {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  box-sizing: border-box; /* Ölçülərin düzgün qalması üçün */
+  
+  border-radius: 12px;
+  /* Afişadakı təmizliyə uyğun olaraq açıq rəngli kənar */
+  border: 1.5px solid #eee;
+  
+  background-color: #fcfcfc;
+  background-image: none; /* Köhnə mor.png silindi */
+  
+  color: #333; /* Oxunaqlı tünd rəng */
+  font-size: 16px;
+  
+  outline: none;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+  transition: 0.3s ease;
+}
+
+/* placeholder */
+input::placeholder {
+  color: #aaa;
+  font-style: italic;
+}
+
+/* focus effekt */
+input:focus {
+  border-color: #0073B8; /* Fokuslananda göy rəng */
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0, 115, 184, 0.15);
+  transform: scale(1.01);
+}
+
+/* Seçim variantları (dropdown) üçün stil */
+#langSelect option {
+  background: white;
+  color: #333;
+}
+
+/* ===== BUTTON ===== */
+button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  
+  border-radius: 12px;
+  border: none;
+  
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  
+  /* Qızılı əvəzinə ağ yazı */
+  color: #ffffff;
+  
+  /* Şəkil əvəzinə afişanın narıncı gradienti */
+  background: linear-gradient(135deg, #EA5413, #FF7E47);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Tünd bənövşəyi kölgə əvəzinə yüngül narıncı kölgə */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  
+  box-shadow: 0 4px 10px rgba(234, 84, 19, 0.2);
+  
+  transition: 0.3s ease;
+  font-family: 'Georgia', serif;
+}
+
+/* hover */
+button:hover {
+  transform: translateY(-3px) scale(1.03);
+  filter: brightness(1.1);
+}
+
+/* click */
+button:active {
+  transform: scale(0.97);
+}
+
+/* ===== RESULT BOX ===== */
+#result {
+  margin-top: 20px;
+  padding: 15px;
+  
+  border-radius: 16px;
+  
+  /* Mor.png əvəzinə təmiz ağ fon və göy kənar xətti */
+  background: #ffffff;
+  border: 2px solid #0073B8;
+  
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  
+  text-align: center;
+  /* Qızılı əvəzinə afişadakı göy rəng */
+  color: #0073B8;
+  font-family: 'Georgia', serif;
+}
+
+/* result image */
+#result img {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  
+  /* Bənövşəyi kölgə əvəzinə göy kölgə */
+  box-shadow: 0 0 15px rgba(0, 115, 184, 0.2);
+}
+
+/* result text */
+#result p {
+  margin-top: 10px;
+  font-size: 15px;
+  /* Kölgələr təmizləndi ki, oxunaqlı olsun */
+  text-shadow: none;
+  font-weight: 500;
+}
