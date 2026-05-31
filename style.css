@@ -24,24 +24,99 @@ body {
   background: linear-gradient(to bottom, rgba(255,255,255,0.8), rgba(255,255,255,0.2));
 }
 /* Ana konteyner */
-.container {
-  background: #EA5413;
-  margin: 20px auto;
-  padding: 25px;
-  border-radius: 30px;
-  text-align: center;
-  width: 90%;
-  max-width: 400px;
-  color: #333;
-  box-shadow: 0 10px 30px rgba(234, 84, 19, 0.1), 0 5px 15px rgba(0, 115, 184, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.container{
+    position:relative;
+    width:90vw;
+    max-width:500px;
+    aspect-ratio:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
+.heart{
+    position:absolute;
+    animation:pulse 3s ease-in-out infinite;
+}
+
+.heart img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+.h1{ animation-delay:0s; }
+.h2{ animation-delay:0.3s; }
+.h3{ animation-delay:0.6s; }
+.h4{ animation-delay:0.9s; }
+.h5{ animation-delay:1.2s; }
+.h6{ animation-delay:1.5s; }
+
+
+
+@keyframes pulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
+}
+
+.text{
+position:absolute;
+bottom:-60px; /* ürəklərin altında */
+left:50%;
+transform:translateX(-50%);
+z-index:10;
+text-align:center;
+font-weight:bold;
+padding:10px;
+width:90%;
+}
+
+.text h1{
+font-size:clamp(18px,4vw,34px);
+line-height:1.2;
+animation:rainbowText 6s linear infinite;
+text-shadow:0 0 10px rgba(255,255,255,.8);
+}
+
+@keyframes rainbowText{
+0%{
+color:#ff69b4; /* çəhrayı */
+}
+25%{
+color:#4dabff; /* mavi */
+}
+50%{
+color:#ffd43b; /* sarı */
+}
+75%{
+color:#51cf66; /* yaşıl */
+}
+100%{
+color:#ff69b4; /* yenə çəhrayı */
+}
+}
+.text h1{
+    font-size:clamp(18px,4vw,34px);
+    line-height:1.1;
+    animation:rainbowText 6s linear infinite,
+              textPulse 2s ease-in-out infinite;
+}
+
+@keyframes textPulse{
+    0%,100%{
+        transform:scale(1);
+    }
+    50%{
+        transform:scale(1.08);
+    }
 }
 
 /* Başlıq */
 h1 {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   color: #fff; /* Afişadakı narıncı */
   font-family: 'Georgia', serif;
   text-transform: uppercase;
