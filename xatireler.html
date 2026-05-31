@@ -17,18 +17,23 @@
     --card-h: 320px;
   }
 
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-    overflow: hidden;
-    user-select: none;
-  }
+    body {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  overflow: hidden;
+  user-select: none;
+  
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
 
   /* ── Header ── */
   .header {
