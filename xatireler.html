@@ -1,527 +1,387 @@
 <!DOCTYPE html>
-<html lang="az">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Xatirələr</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
-
+<title>Tilted Carousel</title>
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
-
-body{
-  font-family:'Georgia', serif;
-  min-height:100vh;
-  overflow:hidden;
-
-  background:#fcfcfc;
-  color:#333;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-
-  position:relative;
-
-  -webkit-user-select:none;
-  user-select:none;
-}
-
-/* Background */
-
-.bg{
-  position:absolute;
-  inset:0;
-
-  background:
-  radial-gradient(circle at top left,
-  rgba(234,84,19,.12), transparent 35%),
-
-  radial-gradient(circle at bottom right,
-  rgba(0,115,184,.12), transparent 35%),
-
-  #fcfcfc;
-
-  animation:bgMove 10s ease-in-out infinite alternate;
-}
-
-.bg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-
-  background:linear-gradient(
-    to bottom,
-    rgba(255,255,255,.7),
-    rgba(255,255,255,.2)
-  );
-}
-
-@keyframes bgMove{
-  from{
-    transform:scale(1);
-  }
-  to{
-    transform:scale(1.05);
-  }
-}
-
-/* floating particles */
-
-.particle{
-  position:absolute;
-
-  width:6px;
-  height:6px;
-
-  border-radius:50%;
-
-  background:#EA5413;
-
-  opacity:.15;
-
-  animation:float linear infinite;
-}
-
-@keyframes float{
-  from{
-    transform:translateY(100vh) scale(0);
-  }
-  to{
-    transform:translateY(-120vh) scale(1.5);
-  }
-}
-
-/* main card */
-
-.container{
-  position:relative;
-  z-index:2;
-
-  width:90%;
-  max-width:420px;
-
-  padding:35px 25px;
-
-  border-radius:30px;
-
-  background:#ffffff;
-
-  border:1px solid rgba(234,84,19,.12);
-
-  box-shadow:
-  0 10px 30px rgba(234,84,19,.08),
-  0 5px 15px rgba(0,115,184,.08);
-
-  text-align:center;
-
-  animation:cardShow 1s ease;
-}
-
-@keyframes cardShow{
-  from{
-    opacity:0;
-    transform:translateY(40px) scale(.92);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-}
-
-/* title */
-
-.title{
-  font-size:32px;
-  font-weight:900;
-
-  margin-bottom:12px;
-
-  color:#EA5413;
-
-  letter-spacing:2px;
-
-  text-transform:uppercase;
-}
-
-/* text */
-
-.text{
-  font-size:15px;
-  line-height:1.8;
-
-  color:#555;
-
-  margin-bottom:30px;
-}
-
-/* countdown */
-
-.countdown{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-
-  margin-bottom:28px;
-}
-
-.timeBox{
-  flex:1;
-
-  padding:14px 6px;
-
-  border-radius:16px;
-
-  background:#ffffff;
-
-  border:1px solid #f0f0f0;
-
-  box-shadow:0 4px 10px rgba(0,0,0,.04);
-}
-
-.timeBox h2{
-  font-size:24px;
-  color:#0073B8;
-}
-
-.timeBox span{
-  font-size:10px;
-
-  color:#777;
-
-  text-transform:uppercase;
-
-  letter-spacing:1px;
-}
-
-/* select */
-
-#langSelect{
-  padding:10px 14px;
-
-  border-radius:12px;
-
-  border:1px solid rgba(234,84,19,.25);
-
-  background:#fff;
-
-  color:#0073B8;
-
-  font-size:15px;
-  font-weight:600;
-
-  outline:none;
-
-  transition:.3s;
-}
-
-#langSelect:hover{
-  border-color:#EA5413;
-
-  transform:translateY(-2px);
-
-  box-shadow:0 4px 10px rgba(234,84,19,.08);
-}
-
-#langSelect option{
-  background:#fff;
-  color:#333;
-}
-
-/* buttons */
-
-.buttons button{
-  margin-top:14px;
-
-  padding:13px 28px;
-
-  border:none;
-  border-radius:14px;
-
-  background:linear-gradient(
-    135deg,
-    #EA5413,
-    #FF7E47
-  );
-
-  color:#fff;
-
-  font-size:16px;
-  font-weight:700;
-
-  font-family:'Georgia', serif;
-
-  cursor:pointer;
-
-  box-shadow:
-  0 4px 12px rgba(234,84,19,.15);
-
-  transition:.3s ease;
-}
-
-.buttons button:hover{
-  transform:translateY(-3px) scale(1.03);
-
-  filter:brightness(1.05);
-
-  box-shadow:
-  0 8px 18px rgba(234,84,19,.2);
-}
-
-.buttons button:active{
-  transform:scale(.97);
-}
-
-/* bottom */
-
-.bottom{
-  margin-top:18px;
-
-  font-size:12px;
-
-  color:#999;
-
-  letter-spacing:2px;
-}
-
-/* mobile */
-
-@media(max-width:500px){
-
-  .container{
-    padding:28px 20px;
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap');
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #e8e5e0;
+    --fg: #1a1a1a;
+    --muted: #888;
+    --card-w: 240px;
+    --card-h: 320px;
   }
 
-  .title{
-    font-size:26px;
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    overflow: hidden;
+    user-select: none;
   }
 
-  .timeBox h2{
-    font-size:22px;
+  /* ── Header ── */
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
   }
 
+  .header .tag {
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(40px, 7vw, 80px);
+    font-weight: 400;
+    color: #c0bdb7;
+    letter-spacing: -0.01em;
+    line-height: 1;
+  }
+
+  /* ── Stage ── */
+  .stage {
+    position: relative;
+    width: 100vw;
+    height: calc(var(--card-h) + 80px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1200px;
+    overflow: visible;
+  }
+
+  /* ── Cards ── */
+  .card {
+    position: absolute;
+    width: var(--card-w);
+    height: var(--card-h);
+    border-radius: 6px;
+    overflow: hidden;
+    cursor: pointer;
+    will-change: transform, opacity;
+    transition:
+      transform 0.65s cubic-bezier(0.76, 0, 0.24, 1),
+      opacity   0.65s cubic-bezier(0.76, 0, 0.24, 1),
+      box-shadow 0.65s ease;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+  }
+
+  /* white border on active */
+  .card.active {
+    box-shadow: 0 0 0 2px #fff, 0 24px 60px rgba(0,0,0,0.22);
+  }
+
+  /* ── Caption ── */
+  .caption {
+    margin-top: 24px;
+    text-align: center;
+    height: 40px;
+  }
+
+  .caption .label {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--muted);
+    text-transform: lowercase;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+
+  .caption .label.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .caption .big-label {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(22px, 4vw, 40px);
+    font-style: italic;
+    color: #c5c2bc;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.5s 0.08s, transform 0.5s 0.08s;
+  }
+
+  .caption .big-label.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Nav ── */
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .nav-btn {
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--fg);
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .nav-btn:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .nav-btn svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .dots {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.18);
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s, width 0.3s;
+    border-radius: 3px;
+  }
+
+  .dot.active {
+    background: var(--fg);
+    width: 20px;
+  }
+  .buttons {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.buttons button {
+  width: 100%;
+  padding: 14px 0;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s ease;
+  border: none;
+  font-family: 'Georgia', serif;
+  /* Afişadakı serif yazı növünə uyğun */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 1, 3, 5-ci düymələr -> Afişadakı NARINCI tonu */
+.buttons button:nth-child(odd) {
+  background: linear-gradient(135deg, #EA5413, #FF7E47);
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 </style>
 </head>
-
 <body>
 
-<div class="bg"></div>
 
-<!-- particles -->
-<script>
-for(let i=0;i<35;i++){
-  const p=document.createElement("div");
-  p.className="particle";
+<div class="stage" id="stage"></div>
 
-  p.style.left=Math.random()*100+"vw";
-  p.style.animationDuration=(5+Math.random()*10)+"s";
-  p.style.animationDelay=Math.random()*5+"s";
-
-  document.body.appendChild(p);
-}
-</script>
-
-<div class="container">
-
-  <h1 class="title">XATİRƏLƏR</h1>
-
-  <p class="text">
-    Yaxında sərgidən xüsusi xatirələr burada paylaşılacaq ✨  
-    Fotolar, videolar və unudulmaz anlar çox yaxında əlavə olunacaq.
-  </p>
-
-  <div class="countdown">
-
-    <div class="timeBox">
-      <h2 id="days">00</h2>
-      <span>GÜN</span>
-    </div>
-
-    <div class="timeBox">
-      <h2 id="hours">00</h2>
-      <span>SAAT</span>
-    </div>
-
-    <div class="timeBox">
-      <h2 id="minutes">00</h2>
-      <span>DƏQİQƏ</span>
-    </div>
-
-  </div>
-
-  <select id="langSelect"></select>
-
-  <br>
-
-  <a class="buttons" href="index.html">
-    <button>GERİ</button>
-  </a>
-
-  <div class="bottom">
-    soon...
-  </div>
-
+<div class="caption">
+  <div class="label" id="smallLabel">—</div>
+  <div class="big-label" id="bigLabel">—</div>
 </div>
 
+<div class="nav">
+  <button class="nav-btn" id="prevBtn">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn">
+    <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+</div>
+   
+   <a class="buttons" href="index.html">
+      <button id="backBtn">geri</button>
+   </a>
+
 <script>
-
-const languages = [
-   { code: "az", flag: "🇦🇿" },
-   { code: "en", flag: "🇬🇧" },
-   { code: "ru", flag: "🇷🇺" },
-   { code: "ge", flag: "🇬🇪" },
-   { code: "hy", flag: "🇦🇲" }
+const SLIDES = [
+  { src: 'xatire1.jpg' },
+  { src: 'xatire2.jpg' },
+  { src: 'xatire3.jpg' },
+  { src: 'xatire4.jpg' },
+  { src: 'xatire5.jpg' },
+  { src: 'xatire6.jpg' },
+  { src: 'xatire7.jpg' },
+  { src: 'xatire8.jpg' },
+  { src: 'xatire9.jpg' },
+  { src: 'xatire10.jpg' },
+  { src: 'xatire11.jpg' },
+  { src: 'xatire12.jpg' },
+  { src: 'xatire13.jpg' },
+  { src: 'xatire14.jpg' },
+  { src: 'xatire15.jpg' },
+  { src: 'xatire16.jpg' },
+  { src: 'xatire17.jpg' },
+  { src: 'xatire18.jpg' },
+  { src: 'xatire19.jpg' },
+  { src: 'xatire20.jpg' },
+  { src: 'xatire21.jpg' },
+  { src: 'xatire22.jpg' }
 ];
-const translations = {
-  az: {
-    title: "XATİRƏLƏR",
-    text: "Yaxında sərgidən xüsusi xatirələr burada paylaşılacaq ✨ Fotolar, videolar və unudulmaz anlar çox yaxında əlavə olunacaq.",
-    day: "GÜN",
-    hour: "SAAT",
-    minute: "DƏQİQƏ",
-    back: "GERİ",
-    soon: "tezliklə..."
-  },
-  
-  en: {
-    title: "MEMORIES",
-    text: "Special memories from the exhibition will be shared here soon ✨ Photos, videos and unforgettable moments will be added very soon.",
-    day: "DAY",
-    hour: "HOUR",
-    minute: "MINUTE",
-    back: "BACK",
-    soon: "coming soon..."
-  },
-  
-  ru: {
-    title: "ВОСПОМИНАНИЯ",
-    text: "Скоро здесь появятся особые воспоминания с выставки ✨ Фотографии, видео и незабываемые моменты будут добавлены совсем скоро.",
-    day: "ДЕНЬ",
-    hour: "ЧАС",
-    minute: "МИНУТА",
-    back: "НАЗАД",
-    soon: "скоро..."
-  },
-  
-  ge: {
-    title: "მოგონებები",
-    text: "გამოფენის განსაკუთრებული მოგონებები მალე აქ განთავსდება ✨ ფოტოები, ვიდეოები და დაუვიწყარი მომენტები ძალიან მალე დაემატება.",
-    day: "დღე",
-    hour: "საათი",
-    minute: "წუთი",
-    back: "უკან",
-    soon: "მალე..."
-  },
-  
-  hy: {
-    title: "ՀՈՒՇԵՐ",
-    text: "Շուտով այստեղ կկիսվեն ցուցահանդեսի հատուկ հիշողությունները ✨ Լուսանկարները, տեսանյութերը և անմոռանալի պահերը շատ շուտով կավելացվեն։",
-    day: "ՕՐ",
-    hour: "ԺԱՄ",
-    minute: "ՐՈՊԵ",
-    back: "ՀԵՏ",
-    soon: "շուտով..."
-  }
-};
 
-/* elements */
+const N = SLIDES.length;
+let active = 3;
+let animating = false;
 
-const title = document.querySelector(".title");
-const text = document.querySelector(".text");
+const stage     = document.getElementById('stage');
+const dotsEl    = document.getElementById('dots');
+const smallLbl  = document.getElementById('smallLabel');
+const bigLbl    = document.getElementById('bigLabel');
 
-const labels = document.querySelectorAll(".timeBox span");
-
-const backBtn = document.querySelector(".buttons button");
-
-const bottom = document.querySelector(".bottom");
-
-const select = document.getElementById("langSelect");
-
-/* change language */
-
-function setLanguage(lang) {
-  
-  const t = translations[lang];
-  
-  title.textContent = t.title;
-  
-  text.textContent = t.text;
-  
-  labels[0].textContent = t.day;
-  labels[1].textContent = t.hour;
-  labels[2].textContent = t.minute;
-  
-  backBtn.textContent = t.back;
-  
-  bottom.textContent = t.soon;
-  
-  localStorage.setItem("lang", lang);
-}
-
-/* first load */
-
-const savedLang = localStorage.getItem("lang") || "az";
-
-setLanguage(savedLang);
-
-select.value = savedLang;
-
-/* when changed */
-
-select.addEventListener("change", () => {
-  setLanguage(select.value);
+// Build cards
+const cards = SLIDES.map((s, i) => {
+  const div = document.createElement('div');
+  div.className = 'card';
+  div.innerHTML = `<img src="${s.src}" alt="${s.label}" loading="lazy">`;
+  div.addEventListener('click', () => goTo(i));
+  stage.appendChild(div);
+  return div;
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-
-   const select = document.getElementById("langSelect");
-
-   languages.forEach(lang => {
-      const option = document.createElement("option");
-      option.value = lang.code;
-      option.textContent = lang.flag;
-      select.appendChild(option);
-   });
-
-   select.value = localStorage.getItem("lang") || "az";
-
-   select.addEventListener("change", () => {
-      localStorage.setItem("lang", select.value);
-   });
-
+// Build dots
+SLIDES.forEach((_, i) => {
+  const d = document.createElement('div');
+  d.className = 'dot';
+  d.addEventListener('click', () => goTo(i));
+  dotsEl.appendChild(d);
 });
 
-/* countdown */
+// ── Layout ──────────────────────────────────────────
+function layout(animate) {
+  const cw = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-w'));
 
-const targetDate = new Date("2026-06-03 00:00:00").getTime();
+  cards.forEach((card, i) => {
+    let offset = i - active;
+    // wrap around
+    if (offset >  N / 2) offset -= N;
+    if (offset < -N / 2) offset += N;
 
-function updateCountdown(){
+    const absOff = Math.abs(offset);
 
-  const now = new Date().getTime();
-  const distance = targetDate - now;
+    // Only show -3 to +3
+    const visible = absOff <= 3;
+    const tx = offset * (cw * 0.58);
+    // tilt: side cards rotated, active straight
+    const ry = offset === 0 ? 0 : (offset > 0 ? -28 : 28);
+    const scale = offset === 0 ? 1 : Math.max(0.62, 1 - absOff * 0.13);
+    const tz = -absOff * 80;
+    const opacity = offset === 0 ? 1 : Math.max(0, 1 - absOff * 0.28);
 
-  const days = Math.floor(distance / (1000*60*60*24));
-  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+    card.style.transition = animate
+      ? 'transform 0.65s cubic-bezier(0.76,0,0.24,1), opacity 0.65s ease, box-shadow 0.65s ease'
+      : 'none';
 
-  document.getElementById("days").innerText = days;
-  document.getElementById("hours").innerText = hours;
-  document.getElementById("minutes").innerText = minutes;
+    card.style.transform = `translateX(${tx}px) translateZ(${tz}px) rotateY(${ry}deg) scale(${scale})`;
+    card.style.opacity   = visible ? opacity : 0;
+    card.style.zIndex    = 100 - absOff;
+    card.style.pointerEvents = visible ? 'auto' : 'none';
+    card.classList.toggle('active', i === active);
+  });
+
+  // dots
+  Array.from(dotsEl.children).forEach((d, i) => d.classList.toggle('active', i === active));
+
+  // caption
+  smallLbl.classList.remove('visible');
+  bigLbl.classList.remove('visible');
+  setTimeout(() => {
+    smallLbl.textContent = SLIDES[active].label;
+    bigLbl.textContent   = SLIDES[active].big;
+    smallLbl.classList.add('visible');
+    bigLbl.classList.add('visible');
+  }, animate ? 180 : 0);
 }
 
-updateCountdown();
-setInterval(updateCountdown,1000);
+function goTo(idx) {
+  if (animating) return;
+  animating = true;
+  active = ((idx % N) + N) % N;
+  layout(true);
+  setTimeout(() => animating = false, 680);
+}
 
+function next() { goTo(active + 1); }
+function prev() { goTo(active - 1); }
+
+document.getElementById('nextBtn').addEventListener('click', next);
+document.getElementById('prevBtn').addEventListener('click', prev);
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') next();
+  if (e.key === 'ArrowLeft')  prev();
+});
+
+// Touch/swipe
+let tx0 = 0;
+document.addEventListener('touchstart', e => { tx0 = e.touches[0].clientX; });
+document.addEventListener('touchend',   e => {
+  const dx = e.changedTouches[0].clientX - tx0;
+  if (Math.abs(dx) > 40) dx < 0 ? next() : prev();
+});
+
+// Drag on desktop
+let drag = false, dragX = 0;
+stage.addEventListener('mousedown', e => { drag = true; dragX = e.clientX; });
+document.addEventListener('mouseup', e => {
+  if (!drag) return;
+  drag = false;
+  const dx = e.clientX - dragX;
+  if (Math.abs(dx) > 50) dx < 0 ? next() : prev();
+});
+
+// Init
+layout(false);
 </script>
-
 </body>
 </html>
